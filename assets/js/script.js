@@ -9,7 +9,6 @@ var scoredisplay = document.querySelector(".score");
 var submit = document.getElementById("submit");
 var scoreList = document.querySelector(".score_list");
 
-
 var randomQuestion;
 var que_count = 0;
 var userScore = 0;
@@ -70,7 +69,7 @@ var questions = [
 ];
 
 // Restart
-function restart(){
+function restart() {
   userScore = 0;
   timeleft = 75;
   start();
@@ -100,7 +99,7 @@ var timer = function () {
 };
 
 // if start button clicked
-if(startButton != null){
+if (startButton != null) {
   startButton.addEventListener("click", start);
 }
 
@@ -112,7 +111,7 @@ function start() {
 
 // getting questions and options from array
 function showQuetions(index) {
-  randomQuestion = questions.sort(() => Math.random() - .5)
+  randomQuestion = questions.sort(() => Math.random() - 0.5);
 
   console.log(randomQuestion);
 
@@ -121,19 +120,16 @@ function showQuetions(index) {
 
   clearlist();
 
+  que_text.innerHTML =
+    "<h2>" + (que_count + 1) + ". " + questions[index].question + "</h2>";
 
-  que_text.innerHTML = "<h2>" + (que_count+1) + ". " + questions[index].question + "</h2>";
-   
-
-  for (var i = 0; i<4; i++) {
-    var optional_list = document.createElement('li');
+  for (var i = 0; i < 4; i++) {
+    var optional_list = document.createElement("li");
     var optional_answer = questions[index].options[i];
     optional_list.innerHTML = optional_answer;
-    optional_list.classList.add('option');
+    optional_list.classList.add("option");
     option_list.append(optional_list);
   }
-  
-  
 
   var option = option_list.querySelectorAll(".option");
 
@@ -144,7 +140,7 @@ function showQuetions(index) {
 }
 
 function clearlist() {
-  var ol = document.querySelector('.option-list');
+  var ol = document.querySelector(".option-list");
   var listLength = ol.children.length;
 
   for (i = 0; i < listLength; i++) {
@@ -196,7 +192,7 @@ function tempscoreSection() {
   temp_score.classList.add("activeInfo");
 
   scoredisplay.textContent = userScore;
-};
+}
 
 function startquestion() {
   info_box.classList.add("inactiveinfo");
@@ -212,60 +208,42 @@ var scoreStrd = [];
 
 function resultArray() {
   var existingEntries = JSON.parse(localStorage.getItem("user"));
-  if(existingEntries == null) {
+  if (existingEntries == null) {
     existingEntries = [];
   }
   var score_array = {
-    name : scorerName.value,
-    score : userScore
+    name: scorerName.value,
+    score: userScore,
   };
-  
-  localStorage.setItem("scoreStrd", JSON.stringify(scoreStrd));
-  scoreStrd.push(score_array);
-  // console.log(scoreStrd);
 
-  localStorage.setItem("user", JSON.stringify(scoreStrd));
-  
+  existingEntries.push(score_array);
+
+  localStorage.setItem("user", JSON.stringify(existingEntries));
 }
 
-// function renderMessage() {
-//   var displayScore = JSON.parse(localStorage.getItem("user"));
-//   // console.log(user);
-//   if (displayScore !== null) {
-//     console.log(displayScore);
-//     scoreList.textContent = displayScore[0] + " has scored " + displayScore[1];
-//   }
-// }
 
-// var arName = document.getElementById("scorerName").value;
-  // var arScore = userScore;
-  // console.log(arName, arScore);
-  // console.log(arName, arScore);
-  // console.log(score_array);
-  var ul = document.getElementById('highscoreList');
-  var li = document.createElement("li");
-  var clearBtn = document.getElementById("clear");
+
+// For Highscore Page
+var ul = document.getElementById("highscoreList");
+var li = document.createElement("li");
+var clearBtn = document.getElementById("clear");
 
 var playerList = [];
 function renderLi() {
-
-  playerList.sort(function(a, b){
-      return b.score - a.score;
-});
+  playerList.sort(function (a, b) {
+    return b.score - a.score;
+  });
 
   for (var i = 0; i < playerList.length; i++) {
-
     var y = playerList[i].name;
     var z = playerList[i].score;
-    
+
     var li = document.createElement("li");
-      
-    li.textContent = y + " has scored " +  z ;
-  
+
+    li.textContent = y + " has scored " + z;
+
     ul.appendChild(li);
-
   }
-
 }
 function init() {
   var player = JSON.parse(localStorage.getItem("user"));
