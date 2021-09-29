@@ -219,57 +219,60 @@ function resultArray() {
     name : scorerName.value,
     score : userScore
   };
-  // var arName = document.getElementById("scorerName").value;
-  // var arScore = userScore;
-  // console.log(arName, arScore);
-  // console.log(arName, arScore);
-  // console.log(score_array);
+  
   localStorage.setItem("scoreStrd", JSON.stringify(scoreStrd));
   scoreStrd.push(score_array);
   // console.log(scoreStrd);
 
   localStorage.setItem("user", JSON.stringify(scoreStrd));
-  // localStorage.setItem("user",JSON.stringify(playersArray));
-
-}
-
-function renderMessage() {
-  var displayScore = JSON.parse(localStorage.getItem("user"));
-  console.log(scoreStrd);
-  if (displayScore !== null) {
-    console.log(displayScore);
-    scoreList.textContent = displayScore[0] + " has scored " + displayScore[1];
-  }
-}
-
-// var playerList = [];
-// function renderLi() {
-
-//   playerList.sort(function(a, b){
-//       return b.score - a.score;
-// });
-
-//   for (var i = 0; i < playerList.length; i++) {
-
-//     var y = playerList[i].name;
-//     var z = playerList[i].score;
-    
-//     var li = document.createElement("li");
-      
-//     li.textContent = y + " 💥 " + z ;
   
-//     ul.appendChild(li);
+}
 
+// function renderMessage() {
+//   var displayScore = JSON.parse(localStorage.getItem("user"));
+//   // console.log(user);
+//   if (displayScore !== null) {
+//     console.log(displayScore);
+//     scoreList.textContent = displayScore[0] + " has scored " + displayScore[1];
 //   }
-
 // }
-// function init() {
-//   var player = JSON.parse(localStorage.getItem("resultarray"));
 
-//   if (player !== null) {
-//     playerList = player;
-//   }
+// var arName = document.getElementById("scorerName").value;
+  // var arScore = userScore;
+  // console.log(arName, arScore);
+  // console.log(arName, arScore);
+  // console.log(score_array);
+  var ul = document.getElementById('highscoreList');
+  var li = document.createElement("li");
+  var clearBtn = document.getElementById("clear");
 
-//   renderLi();
-// }
-// init();
+var playerList = [];
+function renderLi() {
+
+  playerList.sort(function(a, b){
+      return b.score - a.score;
+});
+
+  for (var i = 0; i < playerList.length; i++) {
+
+    var y = playerList[i].name;
+    var z = playerList[i].score;
+    
+    var li = document.createElement("li");
+      
+    li.textContent = y + " has scored " +  z ;
+  
+    ul.appendChild(li);
+
+  }
+
+}
+function init() {
+  var player = JSON.parse(localStorage.getItem("user"));
+
+  if (player !== null) {
+    playerList = player;
+  }
+
+  renderLi();
+}
