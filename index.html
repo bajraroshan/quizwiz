@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Wiz</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro:ital,wght@0,200;0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body >
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="column-onethird">
+            <div class="high-score">
+              <a href="highscore.html">View Highscores</a>
+            </div>
+          </div>
+          <div class="column-onethird">
+            <h1>QuizWiz</h1>
+          </div>
+          <div class="column-onethird">
+            <div class="timer">Time: <span>0</span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="spacer">
+      <section id="infobox">
+        <div class="container">
+          <div class="row">
+            <div class="column-half center">
+              <h2>Coding Quiz Challange</h2>
+              <p>
+                Answer the following code-related questions within the time
+                limit. Please be aware that incorrect answer will result in
+                penalization of scoretime by ten seconds!!
+              </p>
+              <button class="button start-button">Start</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="question-box">
+        <div class="container">
+          <div class="row">
+            <div class="column-half">
+              <div class="question-text"></div>
+              <div class="answer-list">
+                <ol class="option-list"></ol>
+              </div>
+              <div class="instant-result_wrap"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="temp-score">
+        <div class="container">
+          <div class="row">
+            <div class="column-half">
+              <h2>All Done !!</h2>
+
+              <p>Your final score is <span class="score"></span></p>
+              <form action="highscore.html">
+                <label>Enter your Name:</label>
+                <input type="text" id="scorerName" placeholder="Your Name" />
+                <a href="highscore.html" class="submit" id="submit">Submit</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
