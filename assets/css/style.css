@@ -167,10 +167,17 @@ ol.option-list li{
 #temp-score.activeInfo{
     display: block;
 }
-.score_list{
+#highscoreList{
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: decimal;
+}
+#highscoreList li{
+    margin-bottom: 1px;
     background: var(--default-clr);
     color: var(--white);
     padding: 0.5rem 1rem;
+    display: list-item;
 }
 .submit{
     color: var(--default-clr);
