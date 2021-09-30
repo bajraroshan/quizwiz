@@ -300,23 +300,18 @@ function init() {
   renderResult();
 }
 function renderResult() {
-  var liList = document.createElement("li");
-  if (resultList.length == 0) {
-    liList.textContent = "No records found.";
+  resultList.sort(function (a, b) {
+    return b.score - a.score;
+  });
+
+  for (var i = 0; i < 5; i++) {
+    var resultName = resultList[i].name;
+    var resultScore = resultList[i].score;
+
+    var liList = document.createElement("li");
+
+    liList.textContent = i+1 + ". " + resultName + " has scored " + resultScore;
+
     highscoreList.appendChild(liList);
-  } else {
-    resultList.sort(function (a, b) {
-      return b.score - a.score;
-    });
-
-    for (var i = 0; i < 5; i++) {
-      var resultName = resultList[i].name;
-      var resultScore = resultList[i].score;
-
-      liList.textContent =
-        i + 1 + ". " + resultName + " has scored " + resultScore;
-
-      highscoreList.appendChild(liList);
-    }
   }
 }
