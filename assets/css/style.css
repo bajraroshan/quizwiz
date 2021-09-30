@@ -96,7 +96,7 @@ ul{
 .column-onethird{
     width: 33.33%;
 }
-
+/* Header Styling */
 header{
     width: 100%;
     background-color: var(--default-clr);
@@ -118,7 +118,7 @@ header .timer{
     text-align: right;
 }
 
-
+/* Button Styling */
 .button{
     font-size: 1.5rem;
     color: var(--default-clr);
@@ -178,6 +178,9 @@ ol.option-list li{
     color: var(--white);
     padding: 0.5rem 1rem;
     display: list-item;
+}
+#scorerName{
+    padding: 0.17rem 0.5rem;
 }
 .submit{
     color: var(--default-clr);

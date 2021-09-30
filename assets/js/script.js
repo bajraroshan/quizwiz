@@ -14,7 +14,7 @@ var que_count = 0;
 var userScore = 0;
 var timeleft = 75;
 
-// creating an array and passing the number, questions, options, and answers
+// creating an array Question and passing the questions, options, and answers
 var questions = [
   {
     question: "What does HTML stand for?",
@@ -67,85 +67,64 @@ var questions = [
     ],
   },
   {
-    question: 'How do you create a function in JavaScript?',
-    answer: 'function myFunction()',
+    question: "How do you create a function in JavaScript?",
+    answer: "function myFunction()",
     options: [
-        'function myFunction()',
-        'function=myFunction()',
-        'function:myFunction()',
-        'var function=myFunction()',
-    ]
-},
-{
-    question: 'Inside which HTML element do we put the JavaScript?',
-    answer: 'script tag',
-    options: [
-        'js tag',
-        'javascript tag',
-        'script tag',
-        'scripting tag',
-    ]
-},
-{
+      "function myFunction()",
+      "function=myFunction()",
+      "function:myFunction()",
+      "var function=myFunction()",
+    ],
+  },
+  {
+    question: "Inside which HTML element do we put the JavaScript?",
+    answer: "script tag",
+    options: ["js tag", "javascript tag", "script tag", "scripting tag"],
+  },
+  {
     question: 'How do you write "Hello World" in an alert box?',
     answer: 'alert("Hello World");',
     options: [
-        'msg("Hello World");',
-        'alert("Hello World");',
-        'msgBox("Hello World");',
-        'alertBox("Hello World");',
-    ]
-},
-{
-    question: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
-    answer: 'if(i!=5)',
+      'msg("Hello World");',
+      'alert("Hello World");',
+      'msgBox("Hello World");',
+      'alertBox("Hello World");',
+    ],
+  },
+  {
+    question:
+      'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
+    answer: "if(i!=5)",
+    options: ["if i <>5", "if(i!=5)", "if i=! 5 then", "if(i<>5)"],
+  },
+  {
+    question: "How do you round the number 7.25, to the nearest integer?",
+    answer: "Math.round(7.25)",
+    options: ["Math.round(7.25)", "Math.rnd(7.25)", "round(7.25)", "rnd(7.25)"],
+  },
+  {
+    question: "How does a FOR loop start?",
+    answer: "for (i=0;i<=5;i++)",
     options: [
-        'if i <>5',
-        'if(i!=5)',
-        'if i=! 5 then',
-        'if(i<>5)',
-    ]
-},
-{
-    question: 'How do you round the number 7.25, to the nearest integer?',
-    answer: 'Math.round(7.25)',
-    options: [
-        'Math.round(7.25)',
-        'Math.rnd(7.25)',
-        'round(7.25)',
-        'rnd(7.25)',
-    ]
-},
-{
-    question: 'How does a FOR loop start?',
-    answer: 'for (i=0;i<=5;i++)',
-    options: [
-        'for (i=0;i<=5;i++)',
-        'for i = 1 to 5',
-        'for (i=0;i<=5)',
-        'for (i <=5;i++)',
-    ]
-},
-{
-    question: 'What is the correct way to write a JavaScript array?',
+      "for (i=0;i<=5;i++)",
+      "for i = 1 to 5",
+      "for (i=0;i<=5)",
+      "for (i <=5;i++)",
+    ],
+  },
+  {
+    question: "What is the correct way to write a JavaScript array?",
     answer: 'var colors = ["red, "green", "blue"]',
     options: [
-        'var colors = ["red, "green", "blue"]',
-        'var colors = (1:"red",2:"green",3:"blue")',
-        'var colors = "red","green","blue"',
-        'var colors = 1=("red),2=("green"),3=("blue")',
-    ]
-}
+      'var colors = ["red, "green", "blue"]',
+      'var colors = (1:"red",2:"green",3:"blue")',
+      'var colors = "red","green","blue"',
+      'var colors = 1=("red),2=("green"),3=("blue")',
+    ],
+  },
 ];
 
-// Restart
-function restart() {
-  userScore = 0;
-  timeleft = 75;
-  start();
-}
-
-// Timer
+// Timer Function
 
 var timer = function () {
   var downloadTimer = setInterval(function () {
@@ -168,27 +147,26 @@ var timer = function () {
   }, 1000);
 };
 
-// if start button clicked
+// Start button Click function added and checking if there is in the page
 if (startButton != null) {
   startButton.addEventListener("click", start);
 }
 
+// Start Function which include other function
 function start() {
   timer();
   showQuetions(0);
   startquestion();
 }
 
+// Suffling the Question
+randomQuestion = questions.sort(function () {
+  return 0.5 - Math.random();
+});
+
 // getting questions and options from array
 function showQuetions(index) {
-  // randomQuestion = questions.sort(() => Math.random() - 0.5);
-  randomQuestion = questions.sort(function(){return 0.5 - Math.random()});
-
-  // console.log(randomQuestion);
-
   var que_text = document.querySelector(".question-text");
-  // console.log(que_text);
-
   clearlist();
 
   que_text.innerHTML =
@@ -210,6 +188,7 @@ function showQuetions(index) {
   }
 }
 
+// Clearlist function
 function clearlist() {
   var ol = document.querySelector(".option-list");
   var listLength = ol.children.length;
@@ -246,6 +225,7 @@ function optionSelected(answer) {
   }, 2000);
 }
 
+// NextQuestion Function
 function nextQuestion() {
   if (que_count < questions.length - 1) {
     //if question count is less than total question length
@@ -256,6 +236,7 @@ function nextQuestion() {
   }
 }
 
+// Tempscoresction Function
 function tempscoreSection() {
   quiz_box.classList.remove("activeInfo"); //show info box
   temp_score.classList.remove("inactiveinfo");
@@ -265,18 +246,21 @@ function tempscoreSection() {
   scoredisplay.textContent = userScore;
 }
 
+// Start Question Function
 function startquestion() {
   info_box.classList.add("inactiveinfo");
   quiz_box.classList.add("activeInfo"); //show info box
   temp_score.classList.add("inactiveinfo");
 }
 
+// Submit Button click function checking the condition
 if (submit) {
   submit.addEventListener("click", resultArray);
 }
 
 var scoreStrd = [];
 
+// Result Array for score display and setting item in localstorage
 function resultArray() {
   var existingEntries = JSON.parse(localStorage.getItem("user"));
   if (existingEntries == null) {
@@ -298,32 +282,15 @@ var clearBtn = document.getElementById("clear");
 if (clearBtn) {
   clearBtn.addEventListener("click", clearScores);
 }
-
+// ClearScore Function
 function clearScores() {
   localStorage.clear();
   while (highscoreList.firstChild) {
     highscoreList.removeChild(highscoreList.firstChild);
   }
 }
-
-var resultList = [];
-function renderResult() {
-  resultList.sort(function (a, b) {
-    return b.score - a.score;
-  });
-
-  for (var i = 0; i < 5; i++) {
-    var resultName = resultList[i].name;
-    var resultScore = resultList[i].score;
-
-    var li = document.createElement("li");
-
-    li.textContent = i+1 + ". " + resultName + " has scored " + resultScore;
-
-    highscoreList.appendChild(li);
-  }
-}
-
+// Pulling the data from localstorage to display in highscore page
+var resultList = [] ;
 function init() {
   var player = JSON.parse(localStorage.getItem("user"));
 
@@ -331,4 +298,25 @@ function init() {
     resultList = player;
   }
   renderResult();
+}
+function renderResult() {
+  var liList = document.createElement("li");
+  if (resultList.length == 0) {
+    liList.textContent = "No records found.";
+    highscoreList.appendChild(liList);
+  } else {
+    resultList.sort(function (a, b) {
+      return b.score - a.score;
+    });
+
+    for (var i = 0; i < 5; i++) {
+      var resultName = resultList[i].name;
+      var resultScore = resultList[i].score;
+
+      liList.textContent =
+        i + 1 + ". " + resultName + " has scored " + resultScore;
+
+      highscoreList.appendChild(liList);
+    }
+  }
 }
