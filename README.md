@@ -4,8 +4,10 @@
 Quizwiz is the multiple choice answer game. This game is created with HTML, CSS and Javascript. To play the game you have to start with start button, right answer will be scored and wrong score will be penailzed with 15 seconds deduction on overall time.
 
 ## Demo
-![Default Password Generator Page](https://github.com/bajraroshan/password-generator/blob/master/Assets/Password-Generator.png)
-![Password Generator Page with Password](https://github.com/bajraroshan/password-generator/blob/master/Assets/Password-Generator-with-password.png)
+![Default Quizwiz Page](https://github.com/bajraroshan/quizwiz/blob/master/assets/images/start-page.png)
+![Question page of Quizwiz](https://github.com/bajraroshan/quizwiz/blob/master/assets/images/question-page.png)
+![Score page of Quizwiz](https://github.com/bajraroshan/quizwiz/blob/master/assets/images/score-page.png)
+![Highscore page of Quizwiz](https://github.com/bajraroshan/quizwiz/blob/master/assets/images/result-page.png)
 
 ## Important Links
 Github Page: https://bajraroshan.github.io/quizwiz/<br/>
