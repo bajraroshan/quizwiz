@@ -304,7 +304,8 @@ function renderResult() {
     return b.score - a.score;
   });
 
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < resultList.length; i++) {
+    if (i > 5) return;
     var resultName = resultList[i].name;
     var resultScore = resultList[i].score;
 
